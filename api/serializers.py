@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from opros.models import MatterModel, OprosModel
+from opros.models import MatterModel, OprosModel, ResultOpros
 
 
 class MatterSerializer(serializers.ModelSerializer):
@@ -11,6 +11,8 @@ class MatterSerializer(serializers.ModelSerializer):
             'id',
             'opros',
             'text_matter',
+            'type_matter',
+            'number_matter',
             'text_answer',
             'option_answer1',
             'option_answer2',
@@ -29,4 +31,21 @@ class OprosSerializer(serializers.ModelSerializer):
             'start_date',
             'end_date',
             'description',
+        ]
+
+
+class ResultOprosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ResultOpros
+        fields = [
+            'id',
+            'user',
+            'opros',
+            'text_matter',
+            'number_matter',
+            'text_answer',
+            'option_answer1',
+            'option_answer2',
+            'option_answer3',
+            'option_answer4',
         ]

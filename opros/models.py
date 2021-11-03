@@ -24,7 +24,6 @@ class ResultOpros(models.Model):
 
 
 class MatterModel(models.Model):
-    # user = models.ForeignKey('IDUser', on_delete=models.CASCADE, verbose_name='ID_USER', null=True, blank=True)
     opros = models.ForeignKey('OprosModel', on_delete=models.CASCADE, verbose_name='Опрос')
     text_matter = models.TextField(max_length=100, verbose_name='Вопрос')
     number_matter = models.IntegerField()
@@ -67,20 +66,3 @@ class OprosModel(models.Model):
 
     class Meta:
         verbose_name_plural = 'Опрос'
-
-
-# class TypeMatter(models.Model):
-#     ОДИНАРНЫЙ = 'ОД'
-#     МНОЖЕСТВЕННЫЙ = 'МН'
-#     ТЕКСТОВЫЙ = 'ТК'
-#     TYPE_MATTER = [
-#         (ОДИНАРНЫЙ, 'Один ответ на выбор'),
-#         (МНОЖЕСТВЕННЫЙ, 'Множественный ответ'),
-#         (ТЕКСТОВЫЙ, 'Текстовый ответ'),
-#     ]
-#     type_matter = models.CharField(
-#         max_length=2,
-#         choices=TYPE_MATTER,
-#         default=ОДИНАРНЫЙ,
-#         verbose_name='Тип ответа'
-#     )

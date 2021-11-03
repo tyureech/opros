@@ -7,6 +7,7 @@
 python3 -m venv venv
 
 Windows: venv/Script/activate
+
 Unix(Linux): source venv/bin/activate
 
 2 . Скачиваем пакеты:
