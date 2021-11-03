@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block container %}
+<div class="hero-content-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div id="lab">
+                    {% if update_id %}
+                    <form action="{% url 'update_matter' pk update_id %}" method="post">
+                        {% else %}
+                        <form action="{% url 'create_matter' pk %}" method="post">
+                            {% endif %}
+                            {{ testch }}
+<!--                            {{ form.errors }}-->
+<!--                            {{ student }}-->
+                            {{ form|crispy }}
+                            {% csrf_token %}
+                            <input type="hidden" name="number_matter" value="{{ number_matter }}">
+                            {% if update_id %}
+                            <input type="submit" class="btn btn-success btn-sm " value="Изменить">
+                            <a href="{% url 'delete_matter' pk update_id %}" class="btn btn-danger btn-sm ">Удалить</a>
+                            {% else %}
+                            <input type="submit" class=" btn-success btn-sm" value="Сохранить">
+                        </form>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-6">
+                {% for matter in matters %}
+                <a href="{% url 'update_matter' pk matter.id %}" class="btn btn-success m-3">Вопрос {{ matter.number_matter }}</a>
+                {% endfor %}
+                <a href="{% url 'create_matter' pk %}" class="btn btn-secondary m-3">+</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

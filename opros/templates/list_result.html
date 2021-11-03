@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block container %}
+<div class="hero-content-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 center-block">
+                <h1 class="nav" style="color: #19c880">{{opros.name}}</h1>
+                <p style="color: #19c880">{{opros.description}}</p>
+                <a href="{% url 'home'%}" class="btn btn-success">На главную</a>
+            </div>
+            <div class="col-6 center-block">
+                {%for r in result %}
+                <div class="card-body">
+                    <h6 style="color: #9898c2">{{r.text_matter|default:""}}</h6>
+                    <p style="">{{r.text_answer|default:""}}</p>
+                    <p>{{ r.option_answer1|default:"" }}</p>
+                    <p>{{ r.option_answer2|default:"" }}</p>
+                    <p>{{ r.option_answer3|default:"" }}</p>
+                    <p>{{ r.option_answer4|default:"" }}</p>
+                </div>
+
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

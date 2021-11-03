@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block container %}
+<div class="hero-content-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 center-block">
+                <h1 class="nav">{{opros.name}}</h1>
+                <p>{{opros.description}}</p>
+                <a href="{% url 'matter_opros' opros.id user_id 1 %}"class="btn btn-success">Начать</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

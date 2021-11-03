@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block container %}
+<div class="hero-content-overlay" xmlns="http://www.w3.org/1999/html">
+    <div class="container">
+        <div class="row">
+            <div class="hero-content-wrap">
+                <div class="col-12">
+                    <form method="post">
+                        <div id="lab">
+<!--                            {% csrf_token %}-->
+<!--                            {% if create %}-->
+<!--                            {{ create|crispy }}-->
+<!--                            {% else %}-->
+                            {{ form|crispy }}
+<!--                            {% endif %}-->
+                            {% csrf_token %}
+                            {% if pk %}
+                            <input type="submit" class="btn btn-secondary " value="Изменить">
+                            <a class="btn btn-danger" href="{% url 'delete_opros' pk %}">Удалить</a>
+                            {% else %}
+                            <input type="submit" class=" btn-success " value="Создать">
+                            {% endif %}
+                        </div>
+                    </form>
+                    {% if pk %}
+                    <a href="{% url 'create_matter' pk %}" class="btn btn-success mt-4">Перейти к вопросам опроса</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

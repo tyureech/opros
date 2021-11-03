@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block container %}
+<div class="hero-content-overlay" xmlns="http://www.w3.org/1999/html">
+    <div class="container">
+        <div class="row">
+            <div class="hero-content-wrap">
+                <div class="col-12">
+                    {% for i in content %}
+                    {% if not start %}
+                    <a class="btn btn-success m-1" href="{% url 'update_opros' i.id %}"><h3>{{ i.name }}</h3></a>
+                    {% else %}
+                    <a class="btn btn-success m-1" href="{% url 'start_opros' i.id %}"><h3>{{ i.name }}</h3></a>
+                    {% endif %}
+                    {% endfor %}
+                    {% if not start %}
+                    <a class="btn btn-secondary" href="{% url 'create_opros' %}"><h3>Создать новый опрос</h3></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
